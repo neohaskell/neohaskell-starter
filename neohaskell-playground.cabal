@@ -1,0 +1,63 @@
+cabal-version:      3.4
+name:               neohaskell-playground
+version:            0.1.0
+synopsis:           A playground to try NeoHaskell
+homepage:           https://www.neohaskell.org
+license:            Apache-2.0
+license-file:       LICENSE
+author:             Nikita Tchayka
+maintainer:         neohaskell@nickseagull.dev
+build-type:         Simple
+
+common neohaskell-defaults
+    ghc-options:
+      -Wall
+      -Werror
+
+    default-extensions:
+      BlockArguments
+      DataKinds
+      NoImplicitPrelude
+      TemplateHaskell
+      DeriveDataTypeable
+      QuasiQuotes
+      QualifiedDo
+      ImportQualifiedPost
+      OverloadedStrings
+      OverloadedLists
+      OverloadedLabels
+      OverloadedRecordDot
+      DuplicateRecordFields
+      PackageImports
+      NamedFieldPuns
+      StrictData
+      TypeFamilies
+
+    build-depends:
+      nhcore
+
+    default-language:
+      GHC2021
+
+library
+    import:
+      neohaskell-defaults
+
+    exposed-modules:
+      Playground
+
+    hs-source-dirs:
+      src
+
+executable neohaskell-playground
+    import:
+      neohaskell-defaults
+
+    main-is:
+      Main.hs
+
+    build-depends:
+      neohaskell-playground
+
+    hs-source-dirs:
+      app
